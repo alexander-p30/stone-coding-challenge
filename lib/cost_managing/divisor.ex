@@ -13,7 +13,7 @@ defmodule StoneChallenge.CostManaging.Divisor do
 
   def cost_by_email(purchase_list, emails) do
     if Enum.uniq(emails) == emails do
-      {:ok, total_cost(purchase_list) |> divide_costs(emails)}
+      {:ok, purchase_list |> total_cost() |> divide_costs(emails)}
     else
       {:error,
        "There are repeated emails in the list. Please make sure each email in the list is unique."}
@@ -21,12 +21,16 @@ defmodule StoneChallenge.CostManaging.Divisor do
   end
 
   defp total_cost(purchase_list),
-    do: Enum.reduce(purchase_list, 0, &(&1.unit_price_in_cents * &1.quantity + &2))
+    do:
+      Enum.reduce(purchase_list, 0, fn item, acc ->
+        item.unit_price_in_cents * item.quantity + acc
+      end)
 
   defp divide_costs(total_cost, emails) do
     email_quantity = length(emails)
 
-    div(total_cost, email_quantity)
+    total_cost
+    |> div(email_quantity)
     |> normalize_cost(email_quantity, total_cost)
     |> Enum.with_index(0)
     |> Enum.map(fn {cost, index} -> {Enum.at(emails, index), cost} end)
@@ -40,7 +44,8 @@ defmodule StoneChallenge.CostManaging.Divisor do
   defp normalize_cost(divided_cost, divisor, total_cost) do
     total_cost_diff = total_cost - divided_cost * divisor
 
-    List.duplicate(divided_cost, divisor)
+    divided_cost
+    |> List.duplicate(divisor)
     |> Enum.with_index(1)
     |> Enum.map(fn {cost, index} -> if index <= total_cost_diff, do: cost + 1, else: cost end)
   end

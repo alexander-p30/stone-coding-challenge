@@ -11,7 +11,7 @@ defmodule StoneChallenge.CostManaging do
   ## Parameters
 
   - purchase_list: list of StoneChallenge.CostManaging.PurchaseItem structs
-  - emails: list of strings
+  - emails_list: list of strings
 
   """
   @spec divide_costs_among_emails([StoneChallenge.CostManaging.PurchaseItem.t()], [String.t()]) ::
