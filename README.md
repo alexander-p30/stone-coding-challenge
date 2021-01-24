@@ -6,8 +6,9 @@
 
 1. [Minhas informações](#minhas-informações)
 2. [Documentação](#documentação)
-3. [Como utilizar?](#como-utilizar?)
-4. [Exemplos](#exemplos)
+3. [Como utilizar](#como-utilizar)
+4. [Como funciona](#como-funciona)
+5. [Exemplos](#exemplos)
 
 ---
 
@@ -27,7 +28,7 @@ Documentação técnica do projeto pode ser acessada em [doc/index.html](./doc/i
 
 ---
 
-## Como utilizar?
+## Como utilizar
 
 Segue abaixo uma breve descrição de como utilizar a aplicação. Para maiores detalhes, por favor, acesse a [documentação](./doc/index.html) do projeto.
 
@@ -75,7 +76,7 @@ A aplicação pode ser testada de forma manual ou através dos testes automatiza
 
 ---
 
-## Como funciona?
+## Como funciona
 
 Utilizando a struct %StoneChallenge.CostManaging.ProductItem{}, o preço total da lista de compras é calculado multiplicando o preço de cada item pela sua quantidade. A struct conta com as chaves obrigatórias `name`, `quantity` e `unit_price_in_cents`. Calculado o preço total, calcula-se a divisão inteira desse total pelo número N de emails fornecidos, cujo resultado chamaremos de R. A partir daí:
 
