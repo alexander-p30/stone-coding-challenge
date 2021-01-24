@@ -10,7 +10,7 @@
     <title>StoneChallenge.DataGeneration.Lists — stone_challenge v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
 
-    <script src="dist/sidebar_items-b0a59978f4.js"></script>
+    <script src="dist/sidebar_items-073c923193.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -97,20 +97,11 @@ StoneChallenge.DataGeneration.Lists <small class="app-vsn">(stone_challenge v0.1
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#emails/1">emails(ammount_of_emails)</a>
+    <a href="#type/2">type(type, ammount)</a>
 
   </div>
 
-    <div class="summary-synopsis"><p>Generates a list of numberend, and thus unique, strings representing emails.</p></div>
-
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#purchase/1">purchase(ammount_of_items)</a>
-
-  </div>
-
-    <div class="summary-synopsis"><p>Generates a list of StoneChallenge.CostManaging.PurchaseItem structs.</p></div>
+    <div class="summary-synopsis"><p>Generates a list of specified type.</p></div>
 
 </div>
 
@@ -128,84 +119,43 @@ StoneChallenge.DataGeneration.Lists <small class="app-vsn">(stone_challenge v0.1
 Functions
           </h1>
           <div class="functions-list">
-<section class="detail" id="emails/1">
+<section class="detail" id="type/2">
 
   <div class="detail-header">
-    <a href="#emails/1" class="detail-link" title="Link to this function">
+    <a href="#type/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">emails(ammount_of_emails)</h1>
+    <h1 class="signature">type(type, ammount)</h1>
 
 
   </div>
 
   <section class="docstring">
 
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>emails(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]</pre>
-
-      </div>
-
-<p>Generates a list of numberend, and thus unique, strings representing emails.</p><h2 id="emails/1-parameters" class="section-heading">
-  <a href="#emails/1-parameters" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>Generates a list of specified type.</p><h2 id="type/2-parameters" class="section-heading">
+  <a href="#type/2-parameters" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Parameters
 </h2>
-<ul><li>ammount_of_emails: Integer with number of emails to be returned in the list.</li></ul><h2 id="emails/1-examples" class="section-heading">
-  <a href="#emails/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<ul><li>type: atom representing desired type of list elements.</li><li>ammount: integer with number of elements of specified type in list.</li></ul><h2 id="type/2-examples" class="section-heading">
+  <a href="#type/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
-<p>  iex&gt; StoneChallenge.DataGeneration.Lists.emails(2)
-  [&quot;estevan1@amail.com&quot;, &quot;vinicius2@bmail.com&quot;]</p>
-  </section>
-</section>
-<section class="detail" id="purchase/1">
-
-  <div class="detail-header">
-    <a href="#purchase/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">purchase(ammount_of_items)</h1>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <h2>Specs</h2>
-      <div class="specs">
-
-          <pre>purchase(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: [<a href="StoneChallenge.CostManaging.PurchaseItem.html#t:t/0">StoneChallenge.CostManaging.PurchaseItem.t</a>()]</pre>
-
-      </div>
-
-<p>Generates a list of StoneChallenge.CostManaging.PurchaseItem structs.</p><h2 id="purchase/1-parameters" class="section-heading">
-  <a href="#purchase/1-parameters" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Parameters
-</h2>
-<ul><li>ammount_of_items: Integer with number of items to be returned in the list.</li></ul><h2 id="purchase/1-example" class="section-heading">
-  <a href="#purchase/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Example
-</h2>
-<p>  iex&gt; StoneChallenge.DataGeneration.Lists.purchase(3)
-  [</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9734263927-1">%</span><span class="nc" data-group-id="9734263927-1">StoneChallenge.CostManaging.PurchaseItem</span><span class="p" data-group-id="9734263927-1">{</span><span class="w">
+<p>  iex&gt; StoneChallenge.DataGeneration.Lists.type(:email, 2)</p><p>  [&quot;estevan1@amail.com&quot;, &quot;vinicius2@bmail.com&quot;]</p><p>  iex&gt; StoneChallenge.DataGeneration.Lists.type(:purchase_item, 3)</p><p>  [</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="0270357283-1">%</span><span class="nc" data-group-id="0270357283-1">StoneChallenge.CostManaging.PurchaseItem</span><span class="p" data-group-id="0270357283-1">{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mango&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">quantity</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="ss">unit_price_in_cents</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
-</span><span class="p" data-group-id="9734263927-1">}</span><span class="p">,</span><span class="w">
-</span><span class="p" data-group-id="9734263927-2">%</span><span class="nc" data-group-id="9734263927-2">StoneChallenge.CostManaging.PurchaseItem</span><span class="p" data-group-id="9734263927-2">{</span><span class="w">
+</span><span class="p" data-group-id="0270357283-1">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="0270357283-2">%</span><span class="nc" data-group-id="0270357283-2">StoneChallenge.CostManaging.PurchaseItem</span><span class="p" data-group-id="0270357283-2">{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Banana&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">quantity</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="ss">unit_price_in_cents</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="w">
-</span><span class="p" data-group-id="9734263927-2">}</span><span class="p">,</span><span class="w">
-</span><span class="p" data-group-id="9734263927-3">%</span><span class="nc" data-group-id="9734263927-3">StoneChallenge.CostManaging.PurchaseItem</span><span class="p" data-group-id="9734263927-3">{</span><span class="w">
+</span><span class="p" data-group-id="0270357283-2">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="0270357283-3">%</span><span class="nc" data-group-id="0270357283-3">StoneChallenge.CostManaging.PurchaseItem</span><span class="p" data-group-id="0270357283-3">{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pineapple&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">quantity</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="ss">unit_price_in_cents</span><span class="p">:</span><span class="w"> </span><span class="mi">3900</span><span class="w">
-</span><span class="p" data-group-id="9734263927-3">}</span></code></pre><p>  ]</p>
+</span><span class="p" data-group-id="0270357283-3">}</span></code></pre><p>  ]</p>
   </section>
 </section>
 
