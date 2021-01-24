@@ -1,8 +1,23 @@
 # StoneChallenge
 
+---
+
+## Sumário
+
+1. [Minhas informações](#minhas-informações)
+2. [Documentação](#documentação)
+3. [Como utilizar?](#como-utilizar?)
+4. [Exemplos](#exemplos)
+
+---
+
+## Minhas informações
+
 Candidato: Estevan Alexander de Paula
 
 E-mail: alexanderp30e@gmail.com
+
+Contato: (61) 9 8109-7593
 
 ---
 
@@ -55,7 +70,7 @@ iex> StoneChallenge.DataGeneration.list(:purchase_item)
 
 A aplicação pode ser testada de forma manual ou através dos testes automatizados.
 
-- Para testar manualmente, basta rodar `iex -S mix` no terminal estando na pasta raíz do projeto. A partir daí, pode-se tomar proveito do módulo auxiliar `StoneChallenge.DataGeneration` e da sua função supracitada. Gerados os dados, a função `StoneChallenge.CostManaging.divide_costs_among_emails/2` é utilizada para dividir o custo entre os emails. Para tal, é necessário como primeiro parâmetro uma lista de structs do tipo `%StoneChallenge.CostManaging.PurchaseItem{}` (com `name`, `quantity` e `unit_price_in_cents`) e como segundo parâmetro uma lista de strings. Para maiores especificações, consulte a [documentação](doc/index.html). [Exemplos de utilização](#exemplos).
+- Para testar manualmente, basta rodar `iex -S mix` no terminal estando na pasta raíz do projeto. A partir daí, pode-se tomar proveito do módulo auxiliar `StoneChallenge.DataGeneration` e da sua função supracitada. Gerados os dados, a função `StoneChallenge.CostManaging.divide_costs_among_emails/2` é utilizada para dividir o custo entre os emails. Para tal, é necessário como primeiro parâmetro uma lista de structs do tipo `%StoneChallenge.CostManaging.PurchaseItem{}` (com `name`, `quantity` e `unit_price_in_cents`) e como segundo parâmetro uma lista de strings. Consulte a [documentação](doc/index.html) para maiores especificações. [Exemplos de utilização](#exemplos).
 - Os testes automatizados contam com 100% de cobertura e podem ser executados digitando `mix test` no terminal estando na pasta raíz do projeto. A opção `--cover` pode ser adicionada para que seja gerado um relatório de cobertura dos testes.
 
 ---

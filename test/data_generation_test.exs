@@ -4,7 +4,7 @@ defmodule StoneChallenge.DataGenerationTest do
   alias StoneChallenge.DataGeneration
   alias StoneChallenge.CostManaging.PurchaseItem
 
-  describe "email_list" do
+  describe "list" do
     setup do
       %{
         emails_list: DataGeneration.list(:email),

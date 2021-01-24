@@ -22,9 +22,10 @@ defmodule StoneChallenge.DataGeneration.Emails do
   Returns a random string representing an email domain.
 
   ## Examples
-
+    ```
     iex> StoneChallenge.DataGeneration.Emails.generate_domain()
     "@dmail.com"
+    ```
 
   """
   @spec generate_domain :: String.t()

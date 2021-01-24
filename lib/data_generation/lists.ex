@@ -14,7 +14,7 @@ defmodule StoneChallenge.DataGeneration.Lists do
     - ammount: integer with number of elements of specified type in list.
 
   ## Examples
-
+    ```
     iex> StoneChallenge.DataGeneration.Lists.type(:email, 2)
 
     ["estevan1@amail.com", "vinicius2@bmail.com"]
@@ -38,6 +38,7 @@ defmodule StoneChallenge.DataGeneration.Lists do
         unit_price_in_cents: 3900
       }
     ]
+    ```
   """
   @spec type(:email | :purchase_item, integer) :: [
           String.t() | StoneChallenge.CostManaging.PurchaseItem.t()
