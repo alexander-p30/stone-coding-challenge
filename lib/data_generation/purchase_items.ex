@@ -17,13 +17,13 @@ defmodule StoneChallenge.DataGeneration.PurchaseItems do
   """
   @spec generate :: StoneChallenge.CostManaging.PurchaseItem.t()
   def generate do
-    {:ok, purchase_item} =
+    {:ok, item} =
       CostManaging.create_purchase_item(%{
         name: Enum.random(@product_names),
         quantity: Enum.random(0..5),
         unit_price_in_cents: Enum.random(1..50) * Enum.random([10, 100])
       })
 
-    purchase_item
+    item
   end
 end

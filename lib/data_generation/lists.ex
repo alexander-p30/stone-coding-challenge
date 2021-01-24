@@ -6,41 +6,21 @@ defmodule StoneChallenge.DataGeneration.Lists do
   alias StoneChallenge.DataGeneration.{Emails, PurchaseItems}
 
   @doc """
-  Generates a list of numberend, and thus unique, strings representing emails.
+  Generates a list of specified type.
 
   ## Parameters
 
-    - ammount_of_emails: Integer with number of emails to be returned in the list.
+    - type: atom representing desired type of list elements.
+    - ammount: integer with number of elements of specified type in list.
 
   ## Examples
 
-    iex> StoneChallenge.DataGeneration.Lists.emails(2)
+    iex> StoneChallenge.DataGeneration.Lists.type(:email, 2)
+
     ["estevan1@amail.com", "vinicius2@bmail.com"]
-  """
-  @spec emails(integer) :: [String.t()]
-  def emails(ammount_of_emails) when not is_integer(ammount_of_emails),
-    do: raise(ArgumentError, "Please provide an integer.")
 
-  def emails(ammount_of_emails) when ammount_of_emails < 1,
-    do: raise(ArgumentError, "Please provide an integer equal or higher than 1.")
+    iex> StoneChallenge.DataGeneration.Lists.type(:purchase_item, 3)
 
-  def emails(ammount_of_emails) do
-    Enum.map(
-      1..ammount_of_emails,
-      &(Emails.generate_name() <> "#{&1}" <> Emails.generate_domain())
-    )
-  end
-
-  @doc """
-  Generates a list of StoneChallenge.CostManaging.PurchaseItem structs.
-
-  ## Parameters
-
-    - ammount_of_items: Integer with number of items to be returned in the list.
-
-  ## Example
-
-    iex> StoneChallenge.DataGeneration.Lists.purchase(3)
     [
       %StoneChallenge.CostManaging.PurchaseItem{
         name: "Mango",
@@ -59,14 +39,30 @@ defmodule StoneChallenge.DataGeneration.Lists do
       }
     ]
   """
-  @spec purchase(integer) :: [StoneChallenge.CostManaging.PurchaseItem.t()]
-  def purchase(ammount_of_items) when not is_integer(ammount_of_items),
-    do: raise(ArgumentError, "Please provide an integer.")
+  @spec type(:email | :purchase_item, integer) :: [
+          String.t() | StoneChallenge.CostManaging.PurchaseItem.t()
+        ]
+  def type(type, ammount) do
+    case type do
+      :email -> emails(ammount)
+      :purchase_item -> purchase(ammount)
+    end
+  end
 
-  def purchase(ammount_of_items) when ammount_of_items < 1,
+  defp emails(ammount_of_emails) when not is_integer(ammount_of_emails) or ammount_of_emails < 1,
     do: raise(ArgumentError, "Please provide an integer equal or higher than 1.")
 
-  def purchase(ammount_of_items) do
+  defp emails(ammount_of_emails) do
+    Enum.map(
+      1..ammount_of_emails,
+      &(Emails.generate_name() <> "#{&1}" <> Emails.generate_domain())
+    )
+  end
+
+  defp purchase(ammount_of_items) when not is_integer(ammount_of_items) or ammount_of_items < 1,
+    do: raise(ArgumentError, "Please provide an integer equal or higher than 1.")
+
+  defp purchase(ammount_of_items) do
     Enum.map(
       1..ammount_of_items,
       fn _ -> PurchaseItems.generate() end

@@ -6,24 +6,18 @@ defmodule StoneChallenge.DataGeneration do
   alias StoneChallenge.DataGeneration.{Lists}
 
   @doc """
-  Returns a list of strings representing emails.
+  Returns a list of specified type.
 
   ## Parameters
 
-  - ammount_of_emails: optional parameter that sets the ammount of emails to be present in the list.
+  - type: atom representing type of list to be generated.
+  - ammount: integer representing the ammount of elements of specified type in the generated list.
+
   """
-  @spec email_list(integer) :: [String.t()]
-  def email_list(ammount_of_emails \\ Enum.random(1..5)),
-    do: Lists.emails(ammount_of_emails)
-
-  @doc """
-  Returns a list of StoneChallenge.CostManaging.PurchaseItem structs.
-
-  ## Parameters
-
-  - ammount_of_items: optional parameter that sets the ammount of structs to be present in the list.
-  """
-  @spec purchase_list(integer) :: [StoneChallenge.CostManaging.PurchaseItem.t()]
-  def purchase_list(ammount_of_items \\ Enum.random(1..10)),
-    do: Lists.purchase(ammount_of_items)
+  @spec list(:email | :purchase_item, integer) :: [
+          String.t() | StoneChallenge.CostManaging.PurchaseItem.t()
+        ]
+  def list(type, ammount \\ Enum.random(1..10)) do
+    Lists.type(type, ammount)
+  end
 end
