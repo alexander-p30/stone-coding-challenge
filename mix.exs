@@ -7,7 +7,14 @@ defmodule StoneChallenge.MixProject do
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      docs: [
+        nest_modules_by_prefix: [
+          StoneChallenge,
+          StoneChallenge.CostManaging,
+          StoneChallenge.DataGeneration
+        ]
+      ]
     ]
   end
 
