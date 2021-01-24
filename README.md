@@ -8,16 +8,15 @@ E-mail: alexanderp30e@gmail.com
 
 ## Documentação
 
-Documentação técnica do projeto pode ser acessada em doc/index.html. Caso o arquivo não esteja disponível, a documentação pode ser gerada da seguinte forma:
-
-```
-mix deps.get
-mix docs
-```
+Documentação técnica do projeto pode ser acessada em [doc/index.html](./doc/index.html).
 
 ---
 
-## Gerando os dados necessários
+## Como utilizar?
+
+Segue abaixo uma breve descrição de como utilizar a aplicação. Para maiores detalhes, por favor, acesse a [documentação](./doc/index.html) do projeto.
+
+### Gerando os dados necessários
 
 O módulo `StoneChallenge.DataGeneration` fornece uma interface para geração de dados aleatórios para teste através das funções `email_list/1` e `purchase_list/1`. Ambas as funções recebem um argumento opcional que determina a quantidade de dados a serem gerados. Caso esse argumento não seja fornecido, um número aleatório e limitado será utilizado no lugar.
 
@@ -52,9 +51,7 @@ iex> StoneChallenge.DataGeneration.purchase_list()
 ]
 ```
 
----
-
-## Testando
+### Testando
 
 A aplicação pode ser testada de forma manual ou através dos testes automatizados.
 
