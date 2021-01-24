@@ -6,33 +6,30 @@ defmodule StoneChallenge.DataGenerationTest do
 
   describe "email_list" do
     setup do
-      %{emails_list: DataGeneration.email_list()}
+      %{
+        emails_list: DataGeneration.list(:email),
+        purchase_list: DataGeneration.list(:purchase_item)
+      }
     end
 
-    test "returns a non-empty list of email strings", %{emails_list: generated_list} do
-      assert is_list(generated_list)
-      assert length(generated_list) > 0
-      assert Enum.all?(generated_list, &is_binary(&1))
+    test "returns a non-empty list of correct type", %{
+      emails_list: emails_list,
+      purchase_list: purchase_list
+    } do
+      assert is_list(emails_list)
+      assert length(emails_list) > 0
+      assert Enum.all?(emails_list, &is_binary(&1))
+      assert is_list(purchase_list)
+      assert length(purchase_list) > 0
+      assert Enum.all?(purchase_list, &match?(%PurchaseItem{}, &1))
     end
 
     test "returns a list of n email strings when n is provided" do
-      assert length(DataGeneration.email_list(13)) == 13
-    end
-  end
-
-  describe "purchase_list" do
-    setup do
-      %{purchase_list: DataGeneration.purchase_list()}
-    end
-
-    test "returns a non-empty list of PurchaseItem structs", %{purchase_list: generated_list} do
-      assert is_list(generated_list)
-      assert length(generated_list) > 0
-      assert Enum.all?(generated_list, &match?(%PurchaseItem{}, &1))
+      assert length(DataGeneration.list(:email, 13)) == 13
     end
 
     test "returns a list of n PurchaseItem structs when n is provided" do
-      assert length(DataGeneration.email_list(25)) == 25
+      assert length(DataGeneration.list(:purchase_item, 25)) == 25
     end
   end
 end
